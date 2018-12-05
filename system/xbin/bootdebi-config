@@ -1,0 +1,5 @@
+#!/system/bin/sh
+
+bootdebi_dir=/system/etc/bootdebi
+
+$bootdebi_dir/scripts/bootdebi-config $*

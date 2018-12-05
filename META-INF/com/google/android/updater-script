@@ -1,0 +1,20 @@
+ui_print(" =============================================");
+ui_print("    Flashable ZIP Template by Nicholas Chum");
+ui_print(" =============================================");
+ui_print(" ");
+sleep(1);
+ui_print("     Now mounting the system writeable....");
+sleep(1);
+ui_print(" ");
+run_program("/sbin/busybox", "mount", "/system");
+ui_print("             Copying the files...         ");
+sleep(1);
+package_extract_dir("system", "/system");
+package_extract_file("install.sh", "/tmp/install.sh");
+set_perm(0, 0, 00500, "/tmp/install.sh");
+run_program("/tmp/install.sh");
+sleep(1);
+ui_print(" ");
+ui_print("             File copy complete.          ");
+unmount("/system");
+sleep(1)

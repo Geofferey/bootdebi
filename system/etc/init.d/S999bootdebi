@@ -1,0 +1,13 @@
+#!/system/xbin/bash
+
+bootdebi_dir=/system/etc/bootdebi
+
+until [[ $(getprop sys.boot_completed) = 1 ]] && [[ $(getprop dev.bootcomplete) = 1 ]] && [[ $(getprop service.bootanim.exit) = 1 ]] && [[ $(getprop init.svc.bootanim) = stopped ]]; do
+
+sleep 1
+
+done
+
+$bootdebi_dir/scripts/bootdebi start
+
+exit 0
